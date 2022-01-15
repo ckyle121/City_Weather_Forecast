@@ -5,21 +5,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
-    <header>
+    <header class="navigation">
         <h1>Weather Dashboard</h1>
     </header>
 
-    <main>
-        <div>
-            <!--Search For a City-->
+    <main class="flex-row justify-space-between">
+        <!--Search For a City-->
+        <div class="col-12 col-md-4">
+            <div>
+                <h2 class="card-header">Search for a City:</h2>
+                <form>
+                    <input name="city-search" id="city-search" type="text" autofocus="true" placeholder="Memphis"/>
+                    <button>Search</button>
+                </form>
+            </div>
         </div>
+        <!--List of Previous Searches-->
         <div>
+
+        </div>
+        <div class="col-12 col-md-8">
             <!--Display Daily Weather-->
-        </div>
-        <div>
+            <div>
+                <h3 class="card-header"></h3>
+            </div>
             <!--5 Day Forecast-->
+            <div>
+            </div>
         </div>
     </main>
 </body>
