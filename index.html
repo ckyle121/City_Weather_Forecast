@@ -18,8 +18,8 @@
             <div>
                 <h2 class="card-header">Search for a City:</h2>
                 <form>
-                    <input name="city-search" id="city-search" type="text" autofocus="true" placeholder="Memphis"/>
-                    <button>Search</button>
+                    <input name="cityName" id="cityName" type="text" autofocus="true" placeholder="Memphis"/>
+                    <button id="search-btn" type="submit">Search</button>
                 </form>
             </div>
         </div>
@@ -27,15 +27,20 @@
         <div>
 
         </div>
-        <div class="col-12 col-md-8">
+        <div class="col-12 col-md-8 border">
             <!--Display Daily Weather-->
             <div>
                 <h3 class="card-header"></h3>
+                <div id="daily-weather"></div>
             </div>
             <!--5 Day Forecast-->
             <div>
+                <h3 class="card-header">5 Day Forecast:</h3>
+                <div id="forecast-weather"></div>
             </div>
         </div>
     </main>
+
+    <script src="./assets/js/script.js"></script>
 </body>
 </html>
