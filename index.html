@@ -27,16 +27,24 @@
         <div>
 
         </div>
-        <div class="col-12 col-md-8 border">
+        <div class="row">
             <!--Display Daily Weather-->
-            <div>
-                <h3 class="card-header"></h3>
-                <div id="daily-weather"></div>
+            <div id="daily-weather" class="col-12 col-md-8 border">
+                <div class="card-body">
+                    <h3 class="card-header" id="city-search-term"></h3>
+                    <img id="weather-icon" alt=""/>
+                    <p id="temperature"></p>
+                    <p id="humidity"></p>
+                    <p id="wind"></p>
+                    <p id="UV-index"></p>
+                </div>
             </div>
             <!--5 Day Forecast-->
-            <div>
-                <h3 class="card-header">5 Day Forecast:</h3>
-                <div id="forecast-weather"></div>
+            <div class="row" id="forecas">
+                <div class="col-12">
+                    <h3 class="card-header">5 Day Forecast:</h3>
+                    <div id="forecast-weather"></div>
+                </div>
             </div>
         </div>
     </main>

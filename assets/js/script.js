@@ -4,9 +4,9 @@ apiKey = "581ce92b85fceec3c210d9faa500eccb"
 // variables to reference dom
 dailyWeatherEl = document.querySelector("#daily-weather")
 searchBtn = document.querySelector("#search-btn");
-cityNameInputEl = document.querySelector("#cityName");
+cityNameInput = document.querySelector("#cityName");
 forecastContainerEl = document.querySelector("#forecast-weather");
-
+citySearchName = document.querySelector("#city-search-term");
 
 // function to handle city submit
 var formSubmitHandler = function(event){
@@ -14,7 +14,7 @@ var formSubmitHandler = function(event){
     event.preventDefault();
 
     // get vallue from input element
-    var cityName = cityNameInputEl.value.trim();
+    var cityName = cityNameInput.value.trim();
 
     if (cityName){
         getDailyWeather(cityName);
@@ -36,7 +36,24 @@ var getDailyWeather = function(cityName){
         .then(function(response){
             // response was succesful
             if (response.ok){
-                console.log(response);
+                response.json().then(function(data){
+                    console.log(data);
+                    // add city name to header 
+                    citySearchName.textContent = cityName;
+
+                    // create list element to hold temp
+                    var temp = document.create("div");
+
+                    // create div to hold wind
+
+                    // create div to hold humidity 
+                    
+
+                    // append elements to daily weather div
+                    dailyWeatherEl.appendChild(temp)
+                    dailyWeatherEl.appendChild()
+                    
+                });
             }
             // response unsucessful 
             else{
@@ -47,6 +64,7 @@ var getDailyWeather = function(cityName){
             alert("Unable to connect to Weather.com")
         })
 };
+
 
 // add event listeners to submit button
 searchBtn.addEventListener("click", formSubmitHandler)
