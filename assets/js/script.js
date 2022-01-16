@@ -41,12 +41,11 @@ var getDailyWeather = function(cityName){
                     // add city name to header 
                     citySearchName.textContent = cityName;
 
-                    // create list element to hold temp
-                    var temp = document.create("div");
+                    // add temp to dom
 
-                    // create div to hold wind
+                    // add wind to dom 
 
-                    // create div to hold humidity 
+                    // add humidity to dom
                     
 
                     // append elements to daily weather div
