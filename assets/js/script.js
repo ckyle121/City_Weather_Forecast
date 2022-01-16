@@ -22,22 +22,25 @@ var formSubmitHandler = function(event){
         // clear old serach content
         
     } else{
-        alert("Did not Recognize City Name");
+        alert("Please enter a City Name");
     }
 }
 
 // function to get daily weather temp, wind, humidity
 var getDailyWeather = function(cityName){
     // format weather api url 
-    var apiUrl = "api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey;
+    var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&APPID=" + apiKey;
 
     // make a request to get data from url
     fetch(apiUrl)
         .then(function(response){
+            // response was succesful
             if (response.ok){
                 console.log(response);
-            } else{
-                alert("Sorry, did not recognize City");
+            }
+            // response unsucessful 
+            else{
+                alert("Error: did not recognize City");
             }
         })
         .catch(function(error){
