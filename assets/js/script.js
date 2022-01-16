@@ -38,24 +38,21 @@ var getDailyWeather = function(cityName){
             if (response.ok){
                 response.json().then(function(data){
                     console.log(data);
+
                     // add city name to header 
                     citySearchName.textContent = cityName;
 
                     // add temp to dom
                     temp = document.querySelector("#temperature");
-                    temp.innerHTML = "Temperature: " + k2f(response.data.main.temp) + "&#8457";
+                    temp.textContent = "Temperature: " + k2f(response.data.main.temp) + "&#176F";
 
                     // add humidity to dom
                     humidity = document.querySelector("#humdity");
-                    humidity.innerHTML = "Humidity: " + response.data.main.humidity + "%";
+                    humidity.textContent = "Humidity: " + response.data.main.humidity + "%";
 
                     // add wind to dom 
                     wind = document.querySelector("#wind");
-                    wind.innerHTML = "Wind Speed: " + response.data.wind.speed + " MPH";
-
-                    // append elements to daily weather div
-                    dailyWeatherEl.appendChild(temp)
-                    dailyWeatherEl.appendChild()
+                    wind.textContent = "Wind Speed: " + response.data.wind.speed + " MPH";
                     
                 });
             }
