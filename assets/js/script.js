@@ -12,7 +12,7 @@ forecastContainerEl = document.querySelector("#forecast-weather");
 var formSubmitHandler = function(event){
     // prevent page from refresh
     event.preventDefault();
-
+    console.log("test")
     // get vallue from input element
     var cityName = cityNameInputEl.value.trim();
 
