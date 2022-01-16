@@ -44,15 +44,15 @@ var getDailyWeather = function(cityName){
 
                     // add temp to dom
                     temp = document.querySelector("#temperature");
-                    temp.textContent = "Temperature: " + k2f(response.data.main.temp) + "&#176F";
+                    temp.innerHTML = "Temperature: " + k2f(data.main.temp) + " F";
 
                     // add humidity to dom
                     humidity = document.querySelector("#humdity");
-                    humidity.textContent = "Humidity: " + response.data.main.humidity + "%";
+                    humidity.innerHTML = "Humidity: " + (main.humidity) + "%";
 
                     // add wind to dom 
                     wind = document.querySelector("#wind");
-                    wind.textContent = "Wind Speed: " + response.data.wind.speed + " MPH";
+                    wind.innerHTML = "Wind Speed: " + (wind.speed) + " MPH";
                     
                 });
             }
