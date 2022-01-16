@@ -42,11 +42,16 @@ var getDailyWeather = function(cityName){
                     citySearchName.textContent = cityName;
 
                     // add temp to dom
-
-                    // add wind to dom 
+                    temp = document.querySelector("#temperature");
+                    temp.innerHTML = "Temperature: " + k2f(response.data.main.temp) + "&#8457";
 
                     // add humidity to dom
-                    
+                    humidity = document.querySelector("#humdity");
+                    humidity.innerHTML = "Humidity: " + response.data.main.humidity + "%";
+
+                    // add wind to dom 
+                    wind = document.querySelector("#wind");
+                    wind.innerHTML = "Wind Speed: " + response.data.wind.speed + " MPH";
 
                     // append elements to daily weather div
                     dailyWeatherEl.appendChild(temp)
@@ -62,6 +67,11 @@ var getDailyWeather = function(cityName){
         .catch(function(error){
             alert("Unable to connect to Weather.com")
         })
+};
+
+// function to convert kelvin to ferinheight
+var k2f = function(k){
+    return Math.floor((k - 273.15) * 1.8 + 32)
 };
 
 
