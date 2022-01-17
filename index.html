@@ -17,7 +17,7 @@
         <div class="row">
             <div class="col-12 col-md-4">
                 <!--Search For a City-->
-                <div>
+                <div class="border-bottom">
                     <h2 class="card-header">Search for a City:</h2>
                     <form>
                         <input class="search-form" name="cityName" id="cityName" type="text" autofocus="true" placeholder="Memphis"/>
@@ -33,7 +33,7 @@
             <div id="daily-weather" class="col-12 col-md-8 border border-dark rounded">
                 <div class="card-body">
                     <h3 class="card-header" id="city-search-term"></h3>
-                    <img class="bg-warning m-2" id="weather-icon" alt="">
+                    <img class="weather-img m-2" id="weather-icon" alt="">
                     <p id="temperature"></p>
                     <p id="humidity"></p>
                     <p id="wind"></p>
@@ -41,11 +41,12 @@
                 </div>
             </div>
             <!--5 Day Forecast-->
-            <div class="row" id="forecast-weather">
-                <div class="col-12">
+            <div class="container">
                     <h3 class="card-header">5 Day Forecast:</h3>
-                    <div id="forecast-weather"></div>
-                </div>
+                    <div class="row" id="forecast-weather">
+                        <div>
+                        </div>
+                    </div>
             </div>
         </div>
     </main>

@@ -18,6 +18,7 @@ var formSubmitHandler = function(event){
 
     if (cityName){
         getDailyWeather(cityName);
+        getForecastWeather(cityName);
 
         // clear old serach content
         
@@ -26,7 +27,7 @@ var formSubmitHandler = function(event){
     }
 }
 
-// function to get daily weather temp, wind, humidity
+// get daily weather temp, wind, humidity
 var getDailyWeather = function(cityName){
     // format weather api url 
     var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&APPID=" + apiKey;
@@ -37,9 +38,11 @@ var getDailyWeather = function(cityName){
             // response was succesful
             if (response.ok){
                 response.json().then(function(data){
+                    console.log(data)
 
-                    // add city name to header 
-                    citySearchName.textContent = cityName;
+                    // add city name and date to header 
+                    var currentDate = new Date(data.dt*1000).toLocaleDateString();
+                    citySearchName.textContent = cityName + " " + currentDate;
 
                     // add weather icon next to name in header
                     weatherIcon = document.querySelector("#weather-icon")
@@ -94,6 +97,11 @@ var getDailyWeather = function(cityName){
         .catch(function(error){
             alert("Unable to connect to Weather.com")
         })
+};
+
+// get forecast weather data
+var getForecastWeather = function(cityName){
+    var apiUrl = "api.openweathermap.org/data/2.5/forecast/daily?q=" + cityName + "&cnt=" //daysOut + "&appid=" + apiKey;
 };
 
 // function to convert kelvin to ferinheight
