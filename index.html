@@ -13,30 +13,27 @@
         <h1>Weather Dashboard</h1>
     </header>
 
-    <main class="flex-row justify-space-between">
-        <!--Search For a City-->
+    <main class="container">
         <div class="row">
             <div class="col-12 col-md-4">
+                <!--Search For a City-->
                 <div>
                     <h2 class="card-header">Search for a City:</h2>
                     <form>
-                        <input name="cityName" id="cityName" type="text" autofocus="true" placeholder="Memphis"/>
-                        <button id="search-btn">Search</button>
+                        <input class="search-form" name="cityName" id="cityName" type="text" autofocus="true" placeholder="Memphis"/>
+                        <button id="search-btn" class="btn">Search</button>
                     </form>
                 </div>
-            </div>
-             <!--List of Previous Searches-->
-            <div>
+                <!--List of Previous Searches-->
+                <div>
 
+                </div>
             </div>
-        </div>
-
-        <div class="row">
             <!--Display Daily Weather-->
-            <div id="daily-weather" class="col-12 col-md-8 border">
+            <div id="daily-weather" class="col-12 col-md-8 border border-dark rounded">
                 <div class="card-body">
                     <h3 class="card-header" id="city-search-term"></h3>
-                    <img id="weather-icon" alt="">
+                    <img class="bg-warning m-2" id="weather-icon" alt="">
                     <p id="temperature"></p>
                     <p id="humidity"></p>
                     <p id="wind"></p>
@@ -44,7 +41,7 @@
                 </div>
             </div>
             <!--5 Day Forecast-->
-            <div class="row" id="forecas">
+            <div class="row" id="forecast-weather">
                 <div class="col-12">
                     <h3 class="card-header">5 Day Forecast:</h3>
                     <div id="forecast-weather"></div>
