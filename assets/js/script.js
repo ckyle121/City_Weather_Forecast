@@ -44,11 +44,11 @@ var getDailyWeather = function(cityName){
 
                     // add weather icon next to name in header
                     weatherIcon = document.querySelector("#weather-icon");
-                    //weatherIcon.innerHTML = data.weather.icon
+                    weatherIcon.innerHTML = data.weather.icon;
 
                     // add temp to dom
                     temp = document.querySelector("#temperature");
-                    temp.innerHTML = "Temperature: " + k2f(data.main.temp) + " F";
+                    temp.innerHTML = "Temperature: " + k2f(data.main.temp) + "&#176;" + "F";
 
                     // add humidity to dom
                     humidity = document.querySelector("#humidity");
