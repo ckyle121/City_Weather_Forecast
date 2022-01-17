@@ -8,6 +8,7 @@ cityNameInput = document.querySelector("#cityName");
 forecastContainerEl = document.querySelector("#forecast-weather");
 citySearchName = document.querySelector("#city-search-term");
 
+
 // function to handle city submit
 var formSubmitHandler = function(event){
     // prevent page from refresh
@@ -72,6 +73,9 @@ var getDailyWeather = function(cityName){
                             // add UV index to dom
                             UVindex = document.querySelector("#UV-index")
                             UVindex.innerHTML = "UV-index: " + data[0].value;
+                            
+                            // remove any previous class 
+                            UVindex.className = "";
                             
                             // UV index is favorable, show green
                             if (data[0].value < 4){
