@@ -65,23 +65,23 @@ var getDailyWeather = function(cityName){
                     fetch(UVurl)
                         .then(function(response){
                             response.json().then(function(data){
-                        
-                        // add UV index to dom
-                        UVindex = document.querySelector("#UV-index")
-                        UVindex.innerHTML = "UV-index: " + data[0].value;
-                        
-                        // UV index is low, show green
-                        if (data[0].value < 4){
-                            UVindex.classList.add (".bg-success", "text-light");
-                        } 
-                        // UV index is medium, show yellow
-                        else if(data[0].value < 8) {
-                            UVindex.classList.add(".bg-warning", "text-light");
-                        } 
-                        // UV index is high, show red 
-                        else {
-                            UVindex.classList.add(".bg-danger", "text-light");
-                        }
+                            
+                            // add UV index to dom
+                            UVindex = document.querySelector("#UV-index")
+                            UVindex.innerHTML = "UV-index: " + data[0].value;
+                            
+                            // UV index is low, show green
+                            if (data[0].value < 4){
+                                UVindex.classList.add("bg-success", "text-light");
+                            } 
+                            // UV index is medium, show yellow
+                            else if(data[0].value < 8) {
+                                UVindex.classList.add("bg-warning", "text-light");
+                            } 
+                            // UV index is high, show red 
+                            else {
+                                UVindex.classList.add("bg-danger", "text-light");
+                            }
                     })}
                     
                 )});
