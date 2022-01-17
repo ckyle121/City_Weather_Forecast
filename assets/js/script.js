@@ -42,17 +42,21 @@ var getDailyWeather = function(cityName){
                     // add city name to header 
                     citySearchName.textContent = cityName;
 
+                    // add weather icon next to name in header
+                    weatherIcon = document.querySelector("#weather-icon");
+                    //weatherIcon.innerHTML = data.weather.icon
+
                     // add temp to dom
                     temp = document.querySelector("#temperature");
                     temp.innerHTML = "Temperature: " + k2f(data.main.temp) + " F";
 
                     // add humidity to dom
-                    humidity = document.querySelector("#humdity");
-                    humidity.innerHTML = "Humidity: " + (main.humidity) + "%";
+                    humidity = document.querySelector("#humidity");
+                    humidity.innerHTML = "Humidity: " + data.main.humidity + "%";
 
                     // add wind to dom 
                     wind = document.querySelector("#wind");
-                    wind.innerHTML = "Wind Speed: " + (wind.speed) + " MPH";
+                    wind.innerHTML = "Wind Speed: " + data.wind.speed + " MPH";
                     
                 });
             }
