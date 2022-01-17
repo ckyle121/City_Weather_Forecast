@@ -44,7 +44,8 @@ var getDailyWeather = function(cityName){
 
                     // add weather icon next to name in header
                     weatherIcon = document.querySelector("#weather-icon");
-                    weatherIcon.innerHTML = data.weather.icon;
+                    console.log(weatherIcon)
+                    weatherIcon.src = data.weather.icon;
 
                     // add temp to dom
                     temp = document.querySelector("#temperature");
