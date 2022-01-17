@@ -37,7 +37,6 @@ var getDailyWeather = function(cityName){
             // response was succesful
             if (response.ok){
                 response.json().then(function(data){
-                    console.log(data);
 
                     // add city name to header 
                     citySearchName.textContent = cityName;
@@ -58,8 +57,34 @@ var getDailyWeather = function(cityName){
                     // add wind to dom 
                     wind = document.querySelector("#wind");
                     wind.innerHTML = "Wind Speed: " + data.wind.speed + " MPH";
+
+                    // get UV index 
+                    let lat = data.coord.lat;
+                    let lon = data.coord.lon;
+                    let UVurl = "https://api.openweathermap.org/data/2.5/uvi/forecast?lat=" + lat + "&lon=" + lon +  "&appid=" + apiKey;
+                    fetch(UVurl)
+                        .then(function(response){
+                            response.json().then(function(data){
+                        
+                        // add UV index to dom
+                        UVindex = document.querySelector("#UV-index")
+                        UVindex.innerHTML = "UV-index: " + data[0].value;
+                        
+                        // UV index is low, show green
+                        if (data[0].value < 4){
+                            UVindex.classList.add (".bg-success", "text-light");
+                        } 
+                        // UV index is medium, show yellow
+                        else if(data[0].value < 8) {
+                            UVindex.classList.add(".bg-warning", "text-light");
+                        } 
+                        // UV index is high, show red 
+                        else {
+                            UVindex.classList.add(".bg-danger", "text-light");
+                        }
+                    })}
                     
-                });
+                )});
             }
             // response unsucessful 
             else{
