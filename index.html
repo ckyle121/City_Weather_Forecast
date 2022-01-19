@@ -22,17 +22,16 @@
                     <form>
                         <input class="search-form" name="cityName" id="cityName" type="text" autofocus="true" placeholder="Memphis"/>
                         <button id="search-btn" class="btn">Search</button>
+                        <button id="clear-history-btn" class="btn">Clear History</button>
                     </form>
                 </div>
                 <!--List of Previous Searches-->
-                <div id="city-list">
-
-                </div>
+                <div id="city-list"></div>
             </div>
             <!--Display Daily Weather-->
             <div id="daily-weather" class="col-12 col-md-8">
                 <div class="card-body">
-                    <h3 class="card-header" id="city-search-term"></h3>
+                    <h3 class="card-header" id="city-search-term">Today's Weather: </h3>
                     <img class="weather-img m-2" id="weather-icon" alt="">
                     <p id="temperature"></p>
                     <p id="humidity"></p>
@@ -41,7 +40,6 @@
                 </div>
             </div>
             <!--5 Day Forecast-->
-            <div class="container">
                     <h3 class="card-header">5 Day Forecast:</h3>
                     <div class="d-flex flex-row justify-content-center" id="forecast-weather">
                     </div>

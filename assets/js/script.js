@@ -8,7 +8,7 @@ cityNameInput = document.querySelector("#cityName");
 forecastWeather = document.querySelector("#forecast-weather");
 citySearchName = document.querySelector("#city-search-term");
 cityList = document.querySelector("#city-list");
-
+clearHistoryBtn = document.querySelector("#clear-history-btn");
 
 
 // function to handle city submit
@@ -114,7 +114,9 @@ var getForecastWeather = function(cityName){
 
     fetch(apiUrl).then(function(response){
         response.json().then(function(data){
-            console.log(data);
+
+            // clear historical data
+            forecastWeather.innerHTML = "";
 
             // loop through hourly forecast, adding 8 because forecast comes every 3 hours 
             for (var i = 1; i < data.list.length; i+=8){
@@ -171,6 +173,9 @@ var saveSearch = function(){
         localStorage.setItem("cities", JSON.stringify(cities));
     }
 
+    // add searched cities to list
+    cityList.innerHTML = "";
+
     for (var i = 0; i < cities.length; i++){
         var city = cities[i];
         var button = document.createElement("button");
@@ -182,6 +187,11 @@ var saveSearch = function(){
     }
 };
 
+// function to clear history from local storage
+clearHistoryBtn.addEventListener("click", function(){
+    localStorage.clear();
+    cities = [];
+})
 
 
 // function to convert kelvin to ferinheight
