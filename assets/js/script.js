@@ -5,8 +5,10 @@ apiKey = "581ce92b85fceec3c210d9faa500eccb"
 dailyWeatherEl = document.querySelector("#daily-weather")
 searchBtn = document.querySelector("#search-btn");
 cityNameInput = document.querySelector("#cityName");
-forecastContainerEl = document.querySelector("#forecast-weather");
+forecastWeather = document.querySelector("#forecast-weather");
 citySearchName = document.querySelector("#city-search-term");
+cityList = document.querySelector("#city-list");
+
 
 
 // function to handle city submit
@@ -39,7 +41,6 @@ var getDailyWeather = function(cityName){
             // response was succesful
             if (response.ok){
                 response.json().then(function(data){
-                    console.log(data)
 
                     // add city name and date to header 
                     var currentDate = new Date(data.dt*1000).toLocaleDateString();
@@ -99,14 +100,74 @@ var getDailyWeather = function(cityName){
             }
         })
         .catch(function(error){
-            alert("Unable to connect to Weather.com")
+            alert("Unable to connect to Weather.com");
         })
 };
 
 // get forecast weather data
 var getForecastWeather = function(cityName){
-    var apiUrl = "api.openweathermap.org/data/2.5/forecast/daily?q=" + cityName + "&cnt=" //daysOut + "&appid=" + apiKey;
+    var apiUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=" + apiKey;
+
+
+    fetch(apiUrl).then(function(response){
+        response.json().then(function(data){
+            console.log(data);
+
+            // loop through hourly forecast, adding 8 because forecast comes every 3 hours 
+            for (var i = 0; i < data.list.length; i+=8){
+
+                // create div element for forecast weather 
+                var forecastEl = document.createElement("div");
+
+                // create h5 element for date 
+                var dateForecast = document.createElement("h5");
+                dateForecast.textContent = new Date(data.list[i].dt*1000).toLocaleDateString();
+
+                // create img element for weather icon
+                var iconForecast = document.createElement("img");
+                iconForecast.scr = "https://openweathermap.org/img/wn/" + data.list[i].weather[0].icon + "@2x.png";
+
+                // create p element for temperature
+                var tempertaureForecast = document.createElement("p");
+                tempertaureForecast.innerHTML ="Temperature: " + k2f(data.list[i].main.temp) + "&#176;" + "F";
+                
+                // create p element for humidity 
+                var humidityForecast= document.createElement("p");
+                humidityForecast.innerHTML = "Humidity: " + data.list[i].main.humidity + "%";
+
+                // create p element for windspeed 
+                var windForecast = document.createElement("p");
+                windForecast.innerHTML = "Wind Speed: " + data.list[i].wind.speed + "MPH";
+
+                // append date, weather icon temperature, wind speed, & humidity to forecastweather div 
+                forecastEl.append(dateForecast);
+                forecastEl.append(iconForecast);
+                forecastEl.append(tempertaureForecast);
+                forecastEl.append(windForecast);
+                forecastEl.append(humidityForecast);
+
+                // append forecast weather el to forecast weather div 
+                forecastWeather.append(forecastEl);
+            }
+        })
+    })
 };
+
+// get cities from locastorage 
+
+let cities = JSON.parse(localStorage.getItem("cities")) || [];
+
+// store searches to local storage 
+var saveSearch = function(){
+
+    // get city name entered
+    var cityName = cityNameInput.value.trim();
+
+    if (cities.indexOf(cityname) == -1){
+        cities.push(cityName);
+        localStorage.setItem("cities", JSON.stringify(cities));
+    }
+}
 
 // function to convert kelvin to ferinheight
 var k2f = function(k){
