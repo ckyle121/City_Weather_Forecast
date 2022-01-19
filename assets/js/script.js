@@ -126,6 +126,7 @@ var getForecastWeather = function(cityName){
                 // create img element for weather icon
                 var iconForecast = document.createElement("img");
                 iconForecast.scr = "https://openweathermap.org/img/wn/" + data.list[i].weather[0].icon + "@2x.png";
+                console.log(iconForecast)
 
                 // create p element for temperature
                 var tempertaureForecast = document.createElement("p");
