@@ -114,7 +114,7 @@ var getForecastWeather = function(cityName){
             console.log(data);
 
             // loop through hourly forecast, adding 8 because forecast comes every 3 hours 
-            for (var i = 0; i < data.list.length; i+=8){
+            for (var i = 1; i < data.list.length; i+=8){
 
                 // create div element for forecast weather 
                 var forecastEl = document.createElement("div");
