@@ -14,6 +14,7 @@
 .card-header{
     font-style: bold;
     margin: 5px;
+    background-color: rgb(235, 235, 223);
 }
 
 .btn{
@@ -29,12 +30,12 @@
 }
 
 .weather-img{
-    background-color: peachpuff;
+    background-color: rgb(241, 211, 225);
 }
 
 .weather-card{
-    justify-content: center;
-    background-color: darkblue;
+    text-align: center;
+    background-color: navy;
     color: white;
     margin: 20px;
     padding: 20px;

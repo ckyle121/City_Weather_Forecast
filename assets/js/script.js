@@ -20,10 +20,13 @@ var formSubmitHandler = function(event){
     var cityName = cityNameInput.value.trim();
 
     if (cityName){
+        // get daily weather 
         getDailyWeather(cityName);
+        //get forecast weather 
         getForecastWeather(cityName);
+        saveSearch();
 
-        // clear old serach content
+        
         
     } else{
         alert("Please enter a City Name");
@@ -80,15 +83,15 @@ var getDailyWeather = function(cityName){
                             
                             // UV index is favorable, show green
                             if (data[0].value < 4){
-                                UVindex.classList.add("bg-success", "text-light");
+                                UVindex.classList.add("bg-success", "text-light", "p-1");
                             } 
                             // UV index is moderate, show yellow
                             else if(data[0].value < 8) {
-                                UVindex.classList.add("bg-warning", "text-light");
+                                UVindex.classList.add("bg-warning", "text-light", "p-1");
                             } 
                             // UV index is severe, show red 
                             else {
-                                UVindex.classList.add("bg-danger", "text-light");
+                                UVindex.classList.add("bg-danger", "text-light", "p-1");
                             }
                     })}
                     
@@ -154,8 +157,7 @@ var getForecastWeather = function(cityName){
     })
 };
 
-// get cities from locastorage 
-
+// make an array for searched cities 
 let cities = JSON.parse(localStorage.getItem("cities")) || [];
 
 // store searches to local storage 
@@ -164,11 +166,23 @@ var saveSearch = function(){
     // get city name entered
     var cityName = cityNameInput.value.trim();
 
-    if (cities.indexOf(cityname) == -1){
+    if (cities.indexOf(cityName) == -1){
         cities.push(cityName);
         localStorage.setItem("cities", JSON.stringify(cities));
     }
-}
+
+    for (var i = 0; i < cities.length; i++){
+        var city = cities[i];
+        var button = document.createElement("button");
+        button.textContent = city;
+        button.classList.add("btn");
+        cityList.appendChild(button);
+
+        button.addEventListener("click", formSubmitHandler);
+    }
+};
+
+
 
 // function to convert kelvin to ferinheight
 var k2f = function(k){
