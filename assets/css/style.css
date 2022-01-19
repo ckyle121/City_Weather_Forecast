@@ -31,3 +31,11 @@
 .weather-img{
     background-color: peachpuff;
 }
+
+.weather-card{
+    justify-content: center;
+    background-color: darkblue;
+    color: white;
+    margin: 20px;
+    padding: 20px;
+}

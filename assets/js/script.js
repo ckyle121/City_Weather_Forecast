@@ -118,6 +118,7 @@ var getForecastWeather = function(cityName){
 
                 // create div element for forecast weather 
                 var forecastEl = document.createElement("div");
+                forecastEl.classList.add("weather-card");
 
                 // create h5 element for date 
                 var dateForecast = document.createElement("h5");
@@ -125,8 +126,7 @@ var getForecastWeather = function(cityName){
 
                 // create img element for weather icon
                 var iconForecast = document.createElement("img");
-                iconForecast.scr = "https://openweathermap.org/img/wn/" + data.list[i].weather[0].icon + "@2x.png";
-                console.log(iconForecast)
+                iconForecast.src = "https://openweathermap.org/img/wn/" + data.list[i].weather[0].icon + "@2x.png";
 
                 // create p element for temperature
                 var tempertaureForecast = document.createElement("p");
@@ -138,7 +138,7 @@ var getForecastWeather = function(cityName){
 
                 // create p element for windspeed 
                 var windForecast = document.createElement("p");
-                windForecast.innerHTML = "Wind Speed: " + data.list[i].wind.speed + "MPH";
+                windForecast.innerHTML = "Wind Speed: " + data.list[i].wind.speed + " MPH";
 
                 // append date, weather icon temperature, wind speed, & humidity to forecastweather div 
                 forecastEl.append(dateForecast);
