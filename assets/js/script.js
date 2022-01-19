@@ -159,6 +159,14 @@ var getForecastWeather = function(cityName){
     })
 };
 
+// function to load weather from past search
+var cityClickHanlder = function(event){
+    var cityName = event.target.textContent;
+    getForecastWeather(cityName);
+    getDailyWeather(cityName);
+
+};
+
 // make an array for searched cities 
 let cities = JSON.parse(localStorage.getItem("cities")) || [];
 
@@ -183,7 +191,7 @@ var saveSearch = function(){
         button.classList.add("btn");
         cityList.appendChild(button);
 
-        button.addEventListener("click", formSubmitHandler);
+        button.addEventListener("click", cityClickHanlder);
     }
 };
 
@@ -191,8 +199,7 @@ var saveSearch = function(){
 clearHistoryBtn.addEventListener("click", function(){
     localStorage.clear();
     cities = [];
-})
-
+});
 
 // function to convert kelvin to ferinheight
 var k2f = function(k){
@@ -201,4 +208,4 @@ var k2f = function(k){
 
 
 // add event listeners to submit button
-searchBtn.addEventListener("click", formSubmitHandler)
+searchBtn.addEventListener("click", formSubmitHandler);
